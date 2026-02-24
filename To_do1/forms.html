@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+    <title>
+
+    </title>
+</head>
+
+<body>
+
+<form>
+  <label>User Registration Form:</label><br><br>
+  <input type="text" placeholder="Enter your name"><br><br>
+  <input type="email" placeholder="Email" required><br><br>
+  <input type="password" placeholder="Enter password"><br><br>
+  <input type="date" placeholder="Date"><br><br>
+  <input type="file" placeholder="Upload file"><br><br>
+
+  <input type="submit" value="Submit">
+</form>
+
+<br><hr><br>
+
+<form>
+  <label>User Preferences:</label><br>
+  <textarea rows="4" cols="40">About me</textarea><br><br>
+
+  <label>Country:</label>
+    <select>
+        <option value="jo">Jordan</option>
+        <option value="nk">North Korea</option>
+        <option value="sk">South Korea</option>
+    </select><br><br>
+    
+    <fieldset>
+    <legend>Contact Preference</legend>
+        <input type="radio" name="contact" value="email"> Email
+        <input type="radio" name="contact" value="phone"> Phone
+    </fieldset>
+</form>
+
+<br><hr><br>
+
+<form action="https://example.com/submit" method="POST" target="_blank" autocomplete="off">
+  <label>Email:</label>
+    <input type="email" name="email" required>
+    <input type="submit" value="Send">
+</form>
+
+<br><hr><br>
+
+<form>
+  <label>Username:</label>
+    <input type="text" placeholder="Max 10 characters" maxlength="10" pattern="[A-Za-z]+" required title="NO"><br><br>
+
+  <label>Age:</label>
+    <input type="number" min="18" max="60"><br><br>
+
+  <label>Favorite Language:</label>
+    <input type="text" list="langs">
+    <datalist id="langs">
+        <option value="HTML">
+        <option value="CSS">
+        <option value="JavaScript">
+    </datalist><br><br>
+
+  <button type="submit">Submit</button>
+</form>
+
+</body>
