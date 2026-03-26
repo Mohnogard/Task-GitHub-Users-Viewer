@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Directory</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+
+    body{
+         font-family: open sans; 
+         padding: 2rem; 
+         justify-items: center;
+    }
+
+    .container{
+      align-items: center;
+      align-content: center;
+      padding: 30px;
+      width: 90%;
+      text-align: center;
+      height: fit-content;
+      border-radius: 15px;
+      box-shadow: 0px 0px 10px rgb(180, 180, 180) ;
+    }
+
+    .userss{
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+        width: 100%;
+      }
+    .userss .name{
+      border: none;
+      border-radius: 10px;
+      height:200px;
+      align-content: center;
+      text-align: center;
+      box-shadow: 0px 0px 10px rgba(180, 180, 180, 0.686) ;
+    }
+
+    .userss .name:hover{
+      background-color: rgba(162, 162, 162, 0.588);
+      animation: mymove 2s infinite;
+    }
+    @keyframes mymove{
+      from {background-color: green;}
+      to {background-color: yellow;}
+    }
+
+    .board{
+      background-color: rgba(166, 187, 254, 0.462);
+      border-left: 8px solid rgb(0, 0, 165);
+      padding: 30px;
+      text-align: left;
+      border-radius: 10px;
+    }
+    .board div{
+      margin: 20px 5px;
+    }
+
+    .loading{
+      border-radius: 20px;
+      background-color: rgb(0, 0, 165);
+      color: white;
+      margin: 20px 500px;
+      padding: 15px 0px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+    }
+    .divider hr {
+      flex: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+          <h1><i class="fa-brands fa-github" style="margin-right: 10px;"></i>Github Users <span style="color: blue;">Viewer</span></h1>
+          <div>Fetch data from the GitHub API and display users dynamically</div>
+
+          <hr style="margin: 20px 0px">
+          
+          <div id="loading" class="board">
+            <div style="font-weight: bold; font-size: x-large;"><i class="fa-solid fa-bullseye"></i> Your task</div>
+            <div><i class="fa-solid fa-circle-check"></i> Fetch users from:<a href=https://api.github.com/users target="_blank" style="background-color: rgba(167, 167, 255, 0.242);">https://api.github.com/users</a></div>
+            <div><i class="fa-solid fa-circle-check"></i> Display each user's avatar, username, and profile link</div>
+            <div><i class="fa-solid fa-circle-check"></i> Show the data inside beautiful user cards (first 10 users)</div>
+          </div>
+
+          <div  id='loading users' class="loading">Loading users</div>
+          <div class="divider">
+
+          <hr><span style="margin: 20px;">Users will appear here</span><hr>
+
+    </div>
+
+        <div id="users" class="userss"></div>
+        
+    </div>
+
+  <script>
+    const usersDiv = document.getElementById('users');
+    const loadingDiv = document.getElementById('loading users');
+
+    fetch('https://api.github.com/users')
+      .then(res => res.json())
+      .then(users => {
+        loadingDiv.style.display = 'none';
+        users.slice(0,10).forEach(user => {
+          const div = document.createElement('div');
+          div.className = 'name ';
+          div.innerHTML = `
+            <img src='${user.avatar_url}'' width='80px' style="border-radius:100px"><br>
+            <div style="font-weight:bold; margin-top:5px; margin-bottom:-10px">${user.login}</div><br>
+            <a href="https://github.com/${user.html_url}" target="_blank">View profile</a>
+          `;
+          usersDiv.appendChild(div);
+        });
+      })
+      .catch(err => {
+        loadingDiv.textContent = 'Failed to load users.';
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
