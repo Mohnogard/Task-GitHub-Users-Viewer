@@ -1,0 +1,74 @@
+
+    body{
+         font-family: open sans; 
+         padding: 2rem; 
+         justify-items: center;
+    }
+
+    .container{
+      align-items: center;
+      align-content: center;
+      padding: 30px;
+      width: 90%;
+      text-align: center;
+      height: fit-content;
+      border-radius: 15px;
+      box-shadow: 0px 0px 10px rgb(180, 180, 180) ;
+    }
+
+    .userss{
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+        width: 100%;
+      }
+    .userss .name{
+      border: none;
+      border-radius: 10px;
+      height:200px;
+      align-content: center;
+      text-align: center;
+      box-shadow: 0px 0px 10px rgba(180, 180, 180, 0.686) ;
+    }
+    .search-bar {
+      border-radius: 3px;
+      margin: -10px 0px 20px 0px;
+      padding: 10px;
+      border: solid 1px rgb(184, 184, 184);
+      box-shadow: 0px 0px 4px rgba(180, 180, 180, 0.686) ;
+    }
+    .userss .name:hover{
+      background-color: rgba(162, 162, 162, 0.588);
+      animation: mymove 2s infinite;
+    }
+    @keyframes mymove{
+      from {background-color: green;}
+      to {background-color: yellow;}
+    }
+
+    .board{
+      background-color: rgba(166, 187, 254, 0.462);
+      border-left: 8px solid rgb(0, 0, 165);
+      padding: 30px;
+      text-align: left;
+      border-radius: 10px;
+    }
+    .board div{
+      margin: 20px 5px;
+    }
+
+    .loading{
+      border-radius: 20px;
+      background-color: rgb(0, 0, 165);
+      color: white;
+      margin: 20px 500px;
+      padding: 15px 0px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+    }
+    .divider hr {
+      flex: 1;
+    }
