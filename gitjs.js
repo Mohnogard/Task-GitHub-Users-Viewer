@@ -1,7 +1,6 @@
-    const usersDiv = document.getElementById('users');
+  const usersDiv = document.getElementById('users');
     const loadingDiv = document.getElementById('loading users');
     const searchBars = document.getElementById('searchbar');
-
     let usernames = []
     fetch('https://api.github.com/users')
       .then(res => res.json())
@@ -12,14 +11,15 @@
           const div = document.createElement('div');
           div.className = 'name';
           div.innerHTML = `
-            <img src='${user.avatar_url}'' width='80px' style="border-radius:100px"><br>
-            <div style="font-weight:bold; margin-top:5px; margin-bottom:-10px">${user.login}</div><br>
-            <a href="https://github.com/${user.html_url}" target="_blank">View profile</a>
+            <img src='${user.avatar_url}'' width='85px' style="border-radius:100px; border"><br>
+            <div style="font-weight:bold; margin-top:10px; margin-bottom:-10px">${user.login}</div><br>
+            <a href="https://github.com/${user.html_url}" target="_blank" style="text-decoration: none; color: rgb(127, 42, 211);"><i class="fa-solid fa-arrow-up-right-from-square" style="padding:0px 7px"></i> View profile</a>
           `;
           usersDiv.appendChild(div);
         });
       })
 
+    
       .catch(err => {
         loadingDiv.textContent = 'Failed to load users.';
         console.error(err);
@@ -34,12 +34,13 @@ searchBars.addEventListener("input", (event) => {
       let userDiv = document.createElement("div");
       userDiv.className = "name";
       userDiv.innerHTML = `
-            <img src=${user.avatar_url}' width='80px' style="border-radius:100px">
-            <div>${user.login}</div>
-            <a href=${user.html_url} target="_blank">View Profile</a>
+            <img src=${user.avatar_url}' width='85px' style="border-radius:100px">
+            <div style="font-weight:bold; margin-top:10px; margin-bottom:-10px">${user.login}</div><br>
+            <a href="https://github.com/${user.html_url}" target="_blank" style="text-decoration: none; color: rgb(127, 42, 211);"><i class="fa-solid fa-arrow-up-right-from-square" style="padding:0px 7px"></i> View profile</a>
             `;
       users.appendChild(userDiv);
     }
   });
 
 });
+

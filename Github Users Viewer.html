@@ -37,21 +37,21 @@
       text-align: center;
       box-shadow: 0px 0px 10px rgba(180, 180, 180, 0.686) ;
     }
-.search-bar {
-  border-radius: 3px;
-  margin: -10px 0px 20px 0px;
-  padding: 10px;
-  border: solid 1px rgb(184, 184, 184);
-  box-shadow: 0px 0px 4px rgba(180, 180, 180, 0.686) ;
-}
+    .search-bar {
+      border-radius: 3px;
+      margin: -10px 0px 20px 0px;
+      padding: 10px;
+      border: solid 1px rgb(184, 184, 184);
+      box-shadow: 0px 0px 4px rgba(180, 180, 180, 0.686) ;
+    }
     .userss .name:hover{
-      background-color: rgba(162, 162, 162, 0.588);
       animation: mymove 2s infinite;
+      transform: translateY(-10px);
+      box-shadow: 1px 1px 7px 3px #ccc;
     }
     @keyframes mymove{
-      from {background-color: green;}
-      to {background-color: red;}
-
+      from {background-color: rgb(97, 213, 97);}
+      to {background-color: rgb(206, 88, 88);}
     }
 
     .board{
@@ -85,7 +85,7 @@
 
 <body>
   <div class="container">
-          <h1><i class="fa-brands fa-github" style="margin-right: 10px;"></i>Github Users <span style="color: blue;">Viewer</span></h1>
+          <h1><a href="https://github.com/"> <i class="fa-brands fa-github" style="margin-right: 10px; color: black; font-size: 40px;"></i></a>Github Users <span style="color:  rgb(100, 100, 255);">Viewer</span></h1>
           <div>Fetch data from the GitHub API and display users dynamically</div>
 
           <hr style="margin: 20px 0px">
@@ -97,7 +97,7 @@
             src="https://img.icons8.com/emoji/48/bullseye.png"
             alt="bullseye"
           /> Your task</div>
-            <div><i class="fa-solid fa-circle-check" style="color: rgb(100, 100, 255);"></i> Fetch users from:<a href=https://api.github.com/users target="_blank" style="background-color: rgba(167, 167, 255, 0.242);">https://api.github.com/users</a></div>
+            <div><i class="fa-solid fa-circle-check" style="color: rgb(100, 100, 255);"></i> Fetch users from:<a href=https://api.github.com/users target="_blank" style="background-color: rgba(167, 167, 255, 0.242);color: blue;"">https://api.github.com/users</a></div>
             <div><i class="fa-solid fa-circle-check" style="color: rgb(100, 100, 255);" ></i> Display each user's avatar, username, and profile link</div>
             <div><i class="fa-solid fa-circle-check" style="color: rgb(100, 100, 255);"></i> Show the data inside beautiful user cards (first 10 users)</div>
           </div>
@@ -119,7 +119,6 @@
   const usersDiv = document.getElementById('users');
     const loadingDiv = document.getElementById('loading users');
     const searchBars = document.getElementById('searchbar');
-
     let usernames = []
     fetch('https://api.github.com/users')
       .then(res => res.json())
@@ -130,9 +129,9 @@
           const div = document.createElement('div');
           div.className = 'name';
           div.innerHTML = `
-            <img src='${user.avatar_url}'' width='80px' style="border-radius:100px"><br>
-            <div style="font-weight:bold; margin-top:5px; margin-bottom:-10px">${user.login}</div><br>
-            <a href="https://github.com/${user.html_url}" target="_blank">View profile</a>
+            <img src='${user.avatar_url}'' width='85px' style="border-radius:100px; border"><br>
+            <div style="font-weight:bold; margin-top:10px; margin-bottom:-10px">${user.login}</div><br>
+            <a href="https://github.com/${user.html_url}" target="_blank" style="text-decoration: none; color: rgb(127, 42, 211);"><i class="fa-solid fa-arrow-up-right-from-square" style="padding:0px 7px"></i> View profile</a>
           `;
           usersDiv.appendChild(div);
         });
@@ -153,9 +152,9 @@ searchBars.addEventListener("input", (event) => {
       let userDiv = document.createElement("div");
       userDiv.className = "name";
       userDiv.innerHTML = `
-            <img src=${user.avatar_url}' width='80px' style="border-radius:100px">
-            <div>${user.login}</div>
-            <a href=${user.html_url} target="_blank">View Profile</a>
+            <img src=${user.avatar_url}' width='85px' style="border-radius:100px">
+             <div style="font-weight:bold; margin-top:10px; margin-bottom:-10px">${user.login}</div><br>
+            <a href="https://github.com/${user.html_url}" target="_blank" style="text-decoration: none; color: rgb(127, 42, 211);"><i class="fa-solid fa-arrow-up-right-from-square" style="padding:0px 7px"></i> View profile</a>
             `;
       users.appendChild(userDiv);
     }
