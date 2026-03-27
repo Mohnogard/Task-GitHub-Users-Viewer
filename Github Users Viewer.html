@@ -50,7 +50,8 @@
     }
     @keyframes mymove{
       from {background-color: green;}
-      to {background-color: yellow;}
+      to {background-color: red;}
+
     }
 
     .board{
@@ -90,10 +91,15 @@
           <hr style="margin: 20px 0px">
           
           <div id="loading" class="board">
-            <div style="font-weight: bold; font-size: x-large;"><i class="fa-solid fa-bullseye"></i> Your task</div>
-            <div><i class="fa-solid fa-circle-check"></i> Fetch users from:<a href=https://api.github.com/users target="_blank" style="background-color: rgba(167, 167, 255, 0.242);">https://api.github.com/users</a></div>
-            <div><i class="fa-solid fa-circle-check"></i> Display each user's avatar, username, and profile link</div>
-            <div><i class="fa-solid fa-circle-check"></i> Show the data inside beautiful user cards (first 10 users)</div>
+            <div style="font-weight: bold; font-size: x-large;"><img
+            width="30"
+            height="30"
+            src="https://img.icons8.com/emoji/48/bullseye.png"
+            alt="bullseye"
+          /> Your task</div>
+            <div><i class="fa-solid fa-circle-check" style="color: rgb(100, 100, 255);"></i> Fetch users from:<a href=https://api.github.com/users target="_blank" style="background-color: rgba(167, 167, 255, 0.242);">https://api.github.com/users</a></div>
+            <div><i class="fa-solid fa-circle-check" style="color: rgb(100, 100, 255);" ></i> Display each user's avatar, username, and profile link</div>
+            <div><i class="fa-solid fa-circle-check" style="color: rgb(100, 100, 255);"></i> Show the data inside beautiful user cards (first 10 users)</div>
           </div>
 
           <div  id='loading users' class="loading">Loading users</div>
@@ -142,7 +148,7 @@ searchBars.addEventListener("input", (event) => {
   usersDiv.innerHTML=''
   let searchValue = event.target.value;
 
-  usernames.forEach((user) => {
+  usernames.slice(0,10).forEach((user) => {
     if (user.login.includes(searchValue)) {
       let userDiv = document.createElement("div");
       userDiv.className = "name";
