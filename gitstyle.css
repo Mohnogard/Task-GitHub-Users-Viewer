@@ -59,10 +59,11 @@
     }
 
     .loading{
-      border-radius: 20px;
-      background-color: rgb(0, 0, 165);
+      border-radius: 5px;
+      background-color:rgb(100, 100, 255);
       color: white;
-      margin: 20px 500px;
+      margin: 20px auto;
+      width: 15%;
       padding: 15px 0px;
     }
 

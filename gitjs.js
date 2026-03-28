@@ -5,7 +5,7 @@
     fetch('https://api.github.com/users')
       .then(res => res.json())
       .then(users => {
-        loadingDiv.style.display = 'none';
+        loadingDiv.textContent="Load successful.";
         usernames.push(...users)
         users.slice(0,10).forEach(user => {
           const div = document.createElement('div');
@@ -21,8 +21,11 @@
 
     
       .catch(err => {
-        loadingDiv.textContent = 'Failed to load users.';
+        loadingDiv.textContent = 'Failed to load users!';
+        loadingDiv.style.color="red"
+        loadingDiv.style.fontWeight="bold"
         console.error(err);
+        alert(err)
       });
 
 searchBars.addEventListener("input", (event) => {

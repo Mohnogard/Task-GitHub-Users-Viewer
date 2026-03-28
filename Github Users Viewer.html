@@ -66,10 +66,11 @@
     }
 
     .loading{
-      border-radius: 20px;
-      background-color: rgb(0, 0, 165);
+      border-radius: 5px;
+      background-color:rgb(100, 100, 255);
       color: white;
-      margin: 20px 500px;
+      margin: 20px auto;
+      width: 15%;
       padding: 15px 0px;
     }
 
@@ -102,7 +103,7 @@
             <div><i class="fa-solid fa-circle-check" style="color: rgb(100, 100, 255);"></i> Show the data inside beautiful user cards (first 10 users)</div>
           </div>
 
-          <div  id='loading users' class="loading">Loading users</div>
+          <div  id='loading users' class="loading"><i class="fa-solid fa-circle-notch"></i> Loading users</div>
           <div class="divider">
             <hr><span style="margin: 20px;">Users will appear here</span><hr>    
           </div>
@@ -123,7 +124,7 @@
     fetch('https://api.github.com/users')
       .then(res => res.json())
       .then(users => {
-        loadingDiv.style.display = 'none';
+        loadingDiv.textContent="Load successful.";
         usernames.push(...users)
         users.slice(0,10).forEach(user => {
           const div = document.createElement('div');
@@ -139,9 +140,13 @@
 
     
       .catch(err => {
-        loadingDiv.textContent = 'Failed to load users.';
+        loadingDiv.textContent = 'Failed to load users!';
+        loadingDiv.style.backgroundColor='red'
+        loadingDiv.style.fontWeight="bold"
         console.error(err);
+        alert(err)
       });
+
 
 searchBars.addEventListener("input", (event) => {
   usersDiv.innerHTML=''
